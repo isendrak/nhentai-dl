@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F52EC4AA-211F-4E65-AFE2-0DF21599FA5A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NHentaiDL</RootNamespace>
+    <AssemblyName>nhentai-dl</AssemblyName>
+    <BaseIntermediateOutputPath>..\obj\Debug</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release</OutputPath>
+    <BaseIntermediateOutputPath>..\obj\Release</BaseIntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug</OutputPath>
+    <BaseIntermediateOutputPath>..\obj\Debug</BaseIntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG</DefineConstants>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="ISitePlugin.cs" />
+    <Compile Include="AssemblyInfo.cs">
+      <DependentUpon>Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NHentai.net.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doujin-Moe.us.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EHentai.org.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hentaifox.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hitomi.la.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MangaFap.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadGallery.cs">
+      <DependentUpon>Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadPlugins.cs">
+      <DependentUpon>Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hentai4manga.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hentai.tl.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HBrowse.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hentai2Read.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMangaSearcher.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\AUTHORS.md">
+      <Link>AUTHORS.md</Link>
+    </None>
+    <None Include="..\ChangeLog.md">
+      <Link>ChangeLog.md</Link>
+    </None>
+    <None Include="..\LICENSE.md">
+      <Link>LICENSE.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
