@@ -15,7 +15,8 @@ namespace NHentaiDL{
 			if(!GalleryUrl.ToLower().StartsWith("http://", StringComparison.InvariantCulture))
 				GalleryUrl = "http://"+GalleryUrl;
 			string Body = wc.DownloadString(GalleryUrl);
-			string Title = Regex.Match(Body, "<title>(?:Doujin-moe|Doujins) - ([^<]+)</title>").Groups[1].Value;
+			string Title = Regex.Match(Body, "<title>(?:Doujin-moe|Doujins|Doujins\\.com)[ \t]*-[ \t]*([^<]+)</title>").Groups[1].Value;
+			Console.WriteLine(Title);
 			int Page = 1;
 			foreach(Match match in Regex.Matches(Body, "file=\"http://(static\\.doujin-moe\\.us|static[0-9]*\\.doujins\\.com)/r-([^\\.]+)\\.(jpg|png|bmp|jpeg|gif)\\?st=([^&]+)&e=([0-9]+)\"")){
 				if(match.Groups.Count != 6) continue;

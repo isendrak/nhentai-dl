@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F52EC4AA-211F-4E65-AFE2-0DF21599FA5A}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -21,11 +21,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
     <OutputPath>..\bin\Debug</OutputPath>
-    <BaseIntermediateOutputPath>..\obj\Debug</BaseIntermediateOutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>DEBUG</DefineConstants>
     <Externalconsole>true</Externalconsole>
+    <Commandlineparameters>doujins.com/ke8kvpgx</Commandlineparameters>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
