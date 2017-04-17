@@ -10,3 +10,7 @@
 2017-04-01 Daniel Roesich <Isendrak@googlemail.com>
 * fixed doujin-moe.us/doujins.com plugin, fixed too long pathnames
 * finally updated the changelog...
+
+2017-04-17 Daniel Roesich <Isendrak@googlemail.com>
+* fixed doujin-moe.us/doujins.com plugin (again...)
+* fixed the doujin-moe.us/doujins.com fix from before...

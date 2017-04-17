@@ -19,7 +19,7 @@ namespace NHentaiDL{
 			int Page = 1;
 			foreach(Match match in Regex.Matches(Body, "file=\"(http[s]{0,1})://(static\\.doujin-moe\\.us|static[0-9]*\\.doujins\\.com)/r-([^\\.]+)\\.(jpg|png|bmp|jpeg|gif)\\?st=([^&]+)&e=([0-9]+)\"")){
 				if(match.Groups.Count != 7) continue;
-				Images.Add(new ImageInfo{ Filename = string.Format("{0:0000}.{1}", Page, match.Groups[3].Value), URL = new Uri(string.Format("{0}://{1}/r-{2}.{3}?st={4}&e={5}", match.Groups[1], Regex.Replace(match.Groups[2].Value,"static[0-9]+\\.","static."), match.Groups[3].Value, match.Groups[4].Value, match.Groups[5].Value, match.Groups[6])) });
+				Images.Add(new ImageInfo{ Filename = string.Format("{0:0000}.{4}", Page, match.Groups[3].Value), URL = new Uri(string.Format("{0}://{1}/r-{2}.{3}?st={4}&e={5}", match.Groups[1], Regex.Replace(match.Groups[2].Value,"static[0-9]+\\.","static."), match.Groups[3].Value, match.Groups[4].Value, match.Groups[5].Value, match.Groups[6])) });
 				Page++;
 			}
 			return new GalleryInfo{Name = Title, Images = Images };
