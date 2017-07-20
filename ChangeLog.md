@@ -14,3 +14,7 @@
 2017-04-17 Daniel Roesich <Isendrak@googlemail.com>
 * fixed doujin-moe.us/doujins.com plugin (again...)
 * fixed the doujin-moe.us/doujins.com fix from before...
+
+2017-07-20 Daniel Roesich <Isendrak@googlemail.com>
+* nhentai.net uses the "official API" now
+* DEB-Package support dropped
