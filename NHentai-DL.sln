@@ -16,33 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplePlugin", "ExamplePlugin\ExamplePlugin.csproj", "{128D1C81-0BAB-4CFD-9C63-F631F042238C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "debian", "debian", "{D8599706-7831-4786-B341-5D19D3613692}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DEBIAN", "DEBIAN", "{1EC9786A-BB7F-453D-99B9-F5CD1EDA0E8D}"
-	ProjectSection(SolutionItems) = preProject
-		debian\DEBIAN\control = debian\DEBIAN\control
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "usr", "usr", "{4FBF4B84-3040-46A9-92AB-32687725DD07}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{EE8EB3ED-909C-45EC-93F4-E12D3C03DA20}"
-	ProjectSection(SolutionItems) = preProject
-		debian\usr\bin\nhentai-dl = debian\usr\bin\nhentai-dl
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "share", "share", "{C25F93D3-5DBD-47E8-9FB9-DCF802489F04}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "man", "man", "{1A3874F7-4C17-40A0-9582-D8845F4BDDED}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "man1", "man1", "{933741E7-969D-4236-A45B-E98C3BEDE39F}"
-	ProjectSection(SolutionItems) = preProject
-		debian\usr\share\man\man1\nhentai-dl.1 = debian\usr\share\man\man1\nhentai-dl.1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nhentai-dl", "nhentai-dl", "{D04E8837-9016-4ED7-BA32-7058BDEF7116}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{D5F25AD9-49C9-4B52-B531-B122A8BBDB64}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Any CPU = Release|Any CPU
@@ -58,14 +31,6 @@ Global
 		{F52EC4AA-211F-4E65-AFE2-0DF21599FA5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1EC9786A-BB7F-453D-99B9-F5CD1EDA0E8D} = {D8599706-7831-4786-B341-5D19D3613692}
-		{4FBF4B84-3040-46A9-92AB-32687725DD07} = {D8599706-7831-4786-B341-5D19D3613692}
-		{EE8EB3ED-909C-45EC-93F4-E12D3C03DA20} = {4FBF4B84-3040-46A9-92AB-32687725DD07}
-		{C25F93D3-5DBD-47E8-9FB9-DCF802489F04} = {4FBF4B84-3040-46A9-92AB-32687725DD07}
-		{1A3874F7-4C17-40A0-9582-D8845F4BDDED} = {C25F93D3-5DBD-47E8-9FB9-DCF802489F04}
-		{D04E8837-9016-4ED7-BA32-7058BDEF7116} = {C25F93D3-5DBD-47E8-9FB9-DCF802489F04}
-		{933741E7-969D-4236-A45B-E98C3BEDE39F} = {1A3874F7-4C17-40A0-9582-D8845F4BDDED}
-		{D5F25AD9-49C9-4B52-B531-B122A8BBDB64} = {D04E8837-9016-4ED7-BA32-7058BDEF7116}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = NHentai-DL\NHentai-DL.csproj

@@ -3,7 +3,7 @@ PACKAGE_VERSION = 0.1.0.0
 CONFIGURATION   = Release
 ARCH            = all
 
-MSBUILD         = xbuild
+MSBUILD         = msbuild
 MSBUILDFLAGS    = /p:Configuration=$(CONFIGURATION)
 NSIS            = makensis
 RMDIR           = rm -rfv
@@ -25,21 +25,12 @@ clean:
 
 install: all
 	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/share/nhentai-dl
+	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/share/nhentai-dl/plugins
+	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/share/man/man1
 	$(INSTALL) -o root -g root bin/$(CONFIGURATION)/* $(DESTDIR)/$(PREFIX)/share/nhentai-dl/
-	$(RSYNC) -og --chown=root:root debian/usr/* $(DESTDIR)/$(PREFIX)/
-
-dist/deb: all
-	$(MKDIR) dist
-	$(RMDIR) "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)" "dist/$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH).deb"
-	$(MKDIR) "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)"
-	$(RSYNC) debian/* "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)/"
-	$(RSYNC) bin/$(CONFIGURATION)/* "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)/usr/share/$(PACKAGE_NAME)/"
-	md5sum `find "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)" -type f | grep -vE "^$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)/DEBIAN"` | \
-	    sed "s|^\([0-9a-fA-F]\{1,\}\)[ \t]\{1,\}$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)\(/.*\)$$|\1  \2|" > \
-	    "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)/DEBIAN/md5sums"
-	fakeroot dpkg-deb --build "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)"
-	$(MV) "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH).deb" dist/
-	$(RMDIR) "$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(ARCH)"
+	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/bin
+	$(INSTALL) -o root -g root nhentai-dl.1 $(DESTDIR)/$(PREFIX)/man/man1
+	$(INSTALL) -o root -g root nhentai-dl $(DESTDIR)/$(PREFIX)/bin
 
 dist/bin: all
 	$(MKDIR) dist

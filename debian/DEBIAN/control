@@ -1,7 +1,0 @@
-Package:nhentai-dl
-Version:0.1
-Maintainer:Daniel Roesich <Isendrak@googlemail.com>
-Architecture:all
-Section:web
-Description:Downloader for nhentai.net and similar galleries.
-Depends:mono-complete (>=3)
