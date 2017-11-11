@@ -62,23 +62,10 @@ namespace NHentaiDL{
 		}
 		
 		public GalleryInfo GetGallery(string GalleryUrl){
-			/*List<ImageInfo> Images = new List<ImageInfo>();
-			WebClient wc = new WebClient();
-			if(!GalleryUrl.ToLower().StartsWith("https://", StringComparison.InvariantCulture))
-				GalleryUrl = "https://"+GalleryUrl;
-			string Body = wc.DownloadString(GalleryUrl);
-			string Title = Regex.Match(Body, "<h1>([^<]+)</h1>").Groups[1].Value;
-			int Page = 1;
-			foreach(Match match in Regex.Matches(Body, "[ \\t]src=\"http[s]{0,1}://t.nhentai.net/galleries/([0-9]+)/([0-9]+)t\\.(jpg|png|bmp|jpeg|gif)")){
-				if(match.Groups.Count != 4) continue;
-				Images.Add(new ImageInfo{ Filename=string.Format("{0:0000}.{1}",Page,match.Groups[3].Value), URL=new Uri(string.Format("https://i.nhentai.net/galleries/{0}/{1}.{2}",match.Groups[1].Value,match.Groups[2].Value,match.Groups[3].Value)) });
-				Page++;
-			}
-			return new GalleryInfo{Name = Title, Images = Images };*/
-			
 			List<ImageInfo> Images = new List<ImageInfo>();
 			string galleryId = Regex.Match(GalleryUrl, "nhentai.net/g/([0-9]+)").Groups[1].Value;
 			WebClient wc = new WebClient();
+			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
 			DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(GalleryData));
 			GalleryData data = (GalleryData)ser.ReadObject(wc.OpenRead(string.Format("https://nhentai.net/api/gallery/{0}", galleryId)));
 			for(int i = 0; i < data.Images.Pages.Count; ++i){

@@ -38,9 +38,8 @@ namespace NHentaiDL{
 			}
 
 			Console.WriteLine("nhentai-dl v{0}", Assembly.GetEntryAssembly().GetName().Version);
-
 			foreach(ISitePlugin Site in Plugins){
-				foreach(Match match in Site.URLRegex.Matches(string.Join(" ",args))){
+				foreach(Match match in Site.URLRegex.Matches(string.Join(" ", args))){
 					if(match.Groups.Count < 1 || match.Length <= 0) continue;
 					DownloadGallery(Site, match.Value);
 				}

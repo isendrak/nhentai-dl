@@ -1,5 +1,5 @@
 #!/bin/bash
-CMDLINE="$(which mono) /usr/share/nhentai-dl/nhentai-dl.exe"
+CMDLINE="$(which mono) @PREFIX@/share/nhentai-dl/nhentai-dl.exe"
 NAME="$0"
 while (("$#"));do
 	CMDLINE="$CMDLINE \'$1\'"

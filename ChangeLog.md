@@ -18,3 +18,11 @@
 2017-07-20 Daniel Roesich <Isendrak@googlemail.com>
 * nhentai.net uses the "official API" now
 * DEB-Package support dropped
+
+2017-11-04 Daniel Roesich <Isendrak@googlemail.com>
+* added support for pururin.us
+* fixed doujins.com support (this is getting old...)
+
+2017-11-11 Daniel Roesich <Isendrak@googlemail.com>
+* added core functionality for applying custom settings (not complete yet)
+* now sending "User-Agent"-HTTP header ("NHentai-DL/0.1" by default; bypass problems with some sites)

@@ -8,9 +8,7 @@ MSBUILDFLAGS    = /p:Configuration=$(CONFIGURATION)
 NSIS            = makensis
 RMDIR           = rm -rfv
 MKDIR           = mkdir -p
-RSYNC           = rsync -va
-CP              = cp -v
-MV              = mv -v
+ZIP             = zip -v9r
 PREFIX          = /usr/local
 INSTALL         = install
 
@@ -24,21 +22,23 @@ clean:
 	$(RMDIR) bin obj dist
 
 install: all
-	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/share/nhentai-dl
-	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/share/nhentai-dl/plugins
-	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/share/man/man1
-	$(INSTALL) -o root -g root bin/$(CONFIGURATION)/* $(DESTDIR)/$(PREFIX)/share/nhentai-dl/
-	$(INSTALL) -d -o root -g root $(DESTDIR)/$(PREFIX)/bin
-	$(INSTALL) -o root -g root nhentai-dl.1 $(DESTDIR)/$(PREFIX)/man/man1
-	$(INSTALL) -o root -g root nhentai-dl $(DESTDIR)/$(PREFIX)/bin
+	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/share/nhentai-dl
+	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/share/nhentai-dl/plugins
+	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/share/man/man1
+	$(INSTALL) bin/$(CONFIGURATION)/* $(DESTDIR)/$(PREFIX)/share/nhentai-dl/
+	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/bin
+	$(INSTALL) nhentai-dl.1 $(DESTDIR)/$(PREFIX)/share/man/man1
+	sed "s|@PREFIX@|$(PREFIX)|g" < nhentai-dl > $(DESTDIR)/$(PREFIX)/bin/nhentai-dl
+	chmod +x $(DESTDIR)/$(PREFIX)/bin/nhentai-dl
+#$(INSTALL) nhentai-dl $(DESTDIR)/$(PREFIX)/bin
 
 dist/bin: all
 	$(MKDIR) dist
-	zip -v9r "dist/$(PACKAGE_NAME)_$(PACKAGE_VERSION)-$(CONFIGURATION).zip" bin/$(CONFIGURATION)/*
+	$(ZIP) "dist/$(PACKAGE_NAME)_$(PACKAGE_VERSION)-$(CONFIGURATION).zip" bin/$(CONFIGURATION)/*
 
 dist/src:
 	$(MKDIR) dist
-	zip -v9r -xdist/\* -x\*/bin\* -xbin/\* -x\*/obj/\* -xobj/\* -x\*.userprefs "dist/$(PACKAGE_NAME)_$(PACKAGE_VERSION)-Source.zip" *
+	$(ZIP) -xdist/\* -x\*/bin\* -xbin/\* -x\*/obj/\* -xobj/\* -x\*.userprefs "dist/$(PACKAGE_NAME)_$(PACKAGE_VERSION)-Source.zip" *
 
 dist/nsis:
 	$(MKDIR) dist

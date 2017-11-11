@@ -39,6 +39,7 @@ namespace NHentaiDL{
 						headrequest.Method = "HEAD";
 						if(image.HttpReferer != null)
 							headrequest.Referer = image.HttpReferer.ToString();
+						headrequest.UserAgent = Settings.UserAgent;
 						HttpWebResponse headresponse = (HttpWebResponse)headrequest.GetResponse();
 						HttpWebRequest request = (HttpWebRequest)WebRequest.Create(image.URL);
 						if(image.HttpReferer != null)
@@ -53,6 +54,7 @@ namespace NHentaiDL{
 								break;//continue;
 							}
 						}
+						request.UserAgent = Settings.UserAgent;
 						HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 						Stream istream = response.GetResponseStream();
 						Stream ostream = new FileStream(DownloadFilename, FileMode.Append, FileAccess.Write);
