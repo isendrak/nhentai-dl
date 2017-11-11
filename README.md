@@ -21,6 +21,7 @@ nhentai-dl is a rather simple commandline downloader for nhentai.net and several
 * Hentai2read.com - hentai2read.com/gallery_name/
 * HMangaSearcher.com - hmangasearcher.com/m/Gallery+Name
 * Pururin.us - http://www.pururin.us/gallery/12345/gallery-name
+* AsmHentai.com - http://asmhentai.com/g/123456
 
 ## Plugin Directories: ##
 * ### Linux ###

@@ -82,6 +82,9 @@
     <Compile Include="Settings.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
+    <Compile Include="AsmHentai.com.cs">
+      <DependentUpon>ISitePlugin.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

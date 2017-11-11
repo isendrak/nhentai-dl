@@ -31,9 +31,14 @@ namespace NHentaiDL{
 				Retries = 0;
 				while(Retries <= MaxRetries){
 					try{
-						string DownloadFilename = Path.Combine(gallery.Name.Length <= 255 ? gallery.Name : gallery.Name.Substring(0, 255), image.Filename);
-						if(!Directory.Exists(gallery.Name.Length <= 255 ? gallery.Name : gallery.Name.Substring(0, 255))){
-							Directory.CreateDirectory(gallery.Name.Length <= 255 ? gallery.Name : gallery.Name.Substring(0, 255));
+						//TODO: make safe pathname
+						string DownloadDir = (gallery.Name.Length <= 255 ? gallery.Name : gallery.Name.Substring(0, 255))
+							.Replace("/", "-")
+							.Replace("\\", "-")
+							.Replace(":", "-");
+						string DownloadFilename = Path.Combine(DownloadDir, image.Filename);
+						if(!Directory.Exists(DownloadDir)){
+							Directory.CreateDirectory(DownloadDir);
 						}
 						HttpWebRequest headrequest = (HttpWebRequest)WebRequest.Create(image.URL);
 						headrequest.Method = "HEAD";

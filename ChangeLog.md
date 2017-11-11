@@ -26,3 +26,4 @@
 2017-11-11 Daniel Roesich <Isendrak@googlemail.com>
 * added core functionality for applying custom settings (not complete yet)
 * now sending "User-Agent"-HTTP header ("NHentai-DL/0.1" by default; bypass problems with some sites)
+* added support for asmhentai.com
