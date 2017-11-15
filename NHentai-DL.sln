@@ -5,11 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHentai-DL", "NHentai-DL\NH
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C572F4FA-6FFD-4F82-AA66-06A7FF6E0A59}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
 		Makefile = Makefile
-		AUTHORS.md = AUTHORS.md
-		ChangeLog.md = ChangeLog.md
-		LICENSE.md = LICENSE.md
 		NHentai-DL.nsi = NHentai-DL.nsi
 		build.bat = build.bat
 		nhentai-dl = nhentai-dl
@@ -17,6 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplePlugin", "ExamplePlugin\ExamplePlugin.csproj", "{128D1C81-0BAB-4CFD-9C63-F631F042238C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{AFE4BE77-8168-49D7-896D-A10EEBFDB710}"
+	ProjectSection(SolutionItems) = preProject
+		docs\AUTHORS.md = docs\AUTHORS.md
+		docs\ChangeLog.md = docs\ChangeLog.md
+		docs\LICENSE.md = docs\LICENSE.md
+		docs\README.md = docs\README.md
+		docs\CODE_OF_CONDUCT.md = docs\CODE_OF_CONDUCT.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,7 @@ Global
 		{F52EC4AA-211F-4E65-AFE2-0DF21599FA5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{AFE4BE77-8168-49D7-896D-A10EEBFDB710} = {C572F4FA-6FFD-4F82-AA66-06A7FF6E0A59}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = NHentai-DL\NHentai-DL.csproj

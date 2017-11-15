@@ -90,17 +90,17 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="..\README.md">
+    <None Include="..\docs\README.md">
       <Link>README.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\AUTHORS.md">
+    <None Include="..\docs\AUTHORS.md">
       <Link>AUTHORS.md</Link>
     </None>
-    <None Include="..\ChangeLog.md">
+    <None Include="..\docs\ChangeLog.md">
       <Link>ChangeLog.md</Link>
     </None>
-    <None Include="..\LICENSE.md">
+    <None Include="..\docs\LICENSE.md">
       <Link>LICENSE.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
