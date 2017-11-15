@@ -100,7 +100,7 @@
     <None Include="..\docs\ChangeLog.md">
       <Link>ChangeLog.md</Link>
     </None>
-    <None Include="..\docs\LICENSE.md">
+    <None Include="..\LICENSE.md">
       <Link>LICENSE.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

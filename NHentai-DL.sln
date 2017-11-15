@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		build.bat = build.bat
 		nhentai-dl = nhentai-dl
 		nhentai-dl.1 = nhentai-dl.1
+		LICENSE.md = LICENSE.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplePlugin", "ExamplePlugin\ExamplePlugin.csproj", "{128D1C81-0BAB-4CFD-9C63-F631F042238C}"
@@ -18,7 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{AFE4BE77-8
 	ProjectSection(SolutionItems) = preProject
 		docs\AUTHORS.md = docs\AUTHORS.md
 		docs\ChangeLog.md = docs\ChangeLog.md
-		docs\LICENSE.md = docs\LICENSE.md
 		docs\README.md = docs\README.md
 		docs\CODE_OF_CONDUCT.md = docs\CODE_OF_CONDUCT.md
 	EndProjectSection
