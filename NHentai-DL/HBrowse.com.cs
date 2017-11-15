@@ -12,6 +12,7 @@ namespace NHentaiDL{
 		public GalleryInfo GetGallery(string GalleryUrl){
 			List<ImageInfo> Images = new List<ImageInfo>();
 			WebClient wc = new WebClient();
+			if(Settings.Proxy != null) wc.Proxy = new WebProxy(Settings.Proxy);
 			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
 			GalleryUrl = GalleryUrl.Replace("thumbnails/", "");
 			if(!GalleryUrl.ToLower().StartsWith("http://", StringComparison.InvariantCulture))
@@ -23,6 +24,7 @@ namespace NHentaiDL{
 			int Page = 0;
 			int Chapter = 0;
 			foreach(Match chapterLink in Regex.Matches(Body, "http://www\\.hbrowse\\.com/thumbnails/[0-9]+/c[0-9]+")){
+				wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
 				Body = wc.DownloadString(chapterLink.Groups[0].Value);
 				foreach(Match pageLink in Regex.Matches(Body, "http://www\\.hbrowse\\.com/data/([0-9]+)/c([0-9]+)/zzz/([0-9]+)\\.(jpg|png|bmp|jpeg|gif)")){
 					if(pageLink.Groups.Count != 5) continue;

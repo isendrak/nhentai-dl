@@ -12,9 +12,8 @@ namespace NHentaiDL {
 		public GalleryInfo GetGallery(string GalleryUrl) {
 			List<ImageInfo> Images = new List<ImageInfo>();
 			WebClient wc = new WebClient();
+			if(Settings.Proxy != null) wc.Proxy = new WebProxy(Settings.Proxy);
 			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
-			/*if(!GalleryUrl.ToLower().StartsWith("http://", StringComparison.InvariantCulture))
-				GalleryUrl = "http://" + GalleryUrl;*/
 			GalleryUrl = string.Format("https://asmhentai.com/g/{0}/", URLRegex.Match(GalleryUrl).Groups[2].Value);
 			string Body = wc.DownloadString(GalleryUrl);
 			string Title = Regex.Match(Body, "<h1>(.+)</h1>").Groups[1].Value;

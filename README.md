@@ -27,12 +27,12 @@ nhentai-dl is a rather simple commandline downloader for nhentai.net and several
 * ### Linux ###
     * $HOME/.config/nhentai-dl/plugins/
     * /usr/share/nhentai-dl/plugins/
-    * $PWD/
+    * $PWD/plugins/
 
 * ### Windows ###
     * %APPDATA%\nhentai-dl\plugins\
     * %ALLUSERSPROFILE%\Application Data\nhentai-dl\plugins\
-    * %CD%\
+    * %CD%\plugins\
 
 ## License: ##
 Attribution 4.0 International (CC BY 4.0) - https://creativecommons.org/licenses/by/4.0/

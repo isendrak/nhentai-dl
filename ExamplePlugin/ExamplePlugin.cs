@@ -20,6 +20,7 @@ namespace NHentaiDL{
 			//Example for parsing an exemplary gallery type...
 			List<ImageInfo> Images = new List<ImageInfo>();
 			WebClient wc = new WebClient();
+			if(Settings.Proxy != null) wc.Proxy = new WebProxy(Settings.Proxy);
 			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
 			string Body = wc.DownloadString(GalleryUrl);
 			string Title = Regex.Match(Body, "<h1>([^<]+)</h1>").Groups[1].Value;

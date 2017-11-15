@@ -65,6 +65,7 @@ namespace NHentaiDL{
 			List<ImageInfo> Images = new List<ImageInfo>();
 			string galleryId = Regex.Match(GalleryUrl, "nhentai.net/g/([0-9]+)").Groups[1].Value;
 			WebClient wc = new WebClient();
+			if(Settings.Proxy != null) wc.Proxy = new WebProxy(Settings.Proxy);
 			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
 			DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(GalleryData));
 			GalleryData data = (GalleryData)ser.ReadObject(wc.OpenRead(string.Format("https://nhentai.net/api/gallery/{0}", galleryId)));

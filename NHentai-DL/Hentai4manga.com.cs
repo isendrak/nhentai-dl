@@ -12,6 +12,7 @@ namespace NHentaiDL{
 		public GalleryInfo GetGallery(string GalleryUrl){
 			List<ImageInfo> Images = new List<ImageInfo>();
 			WebClient wc = new WebClient();
+			if(Settings.Proxy != null) wc.Proxy = new WebProxy(Settings.Proxy);
 			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
 			if(!GalleryUrl.ToLower().StartsWith("http://", StringComparison.InvariantCulture))
 				GalleryUrl = "http://" + GalleryUrl;

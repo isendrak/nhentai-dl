@@ -13,8 +13,6 @@ namespace NHentaiDL{
 			foreach(ISitePlugin Plugin in Plugins){
 				Console.WriteLine("\t{0}\t-\t{1}", Plugin.Name, Plugin.ExampleURL);
 			}
-			Console.WriteLine("");
-			Console.WriteLine("nhentai-dl v{0}", Assembly.GetEntryAssembly().GetName().Version);
 		}
 
 		public static void Main(string[] args){
@@ -26,7 +24,9 @@ namespace NHentaiDL{
 			LoadPlugins(Assembly.GetEntryAssembly());
 			LoadPlugins(new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "nhentai-dl" + Path.DirectorySeparatorChar + "plugins")));
 			LoadPlugins(new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "nhentai-dl" + Path.DirectorySeparatorChar + "plugins")));
-			LoadPlugins(new DirectoryInfo(Environment.CurrentDirectory));
+			LoadPlugins(new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, "plugins")));
+
+			Console.WriteLine("nhentai-dl v{0}", Assembly.GetEntryAssembly().GetName().Version);
 
 			if(args.Length < 1){
 				Usage();
@@ -37,7 +37,6 @@ namespace NHentaiDL{
 				return;
 			}
 
-			Console.WriteLine("nhentai-dl v{0}", Assembly.GetEntryAssembly().GetName().Version);
 			foreach(ISitePlugin Site in Plugins){
 				foreach(Match match in Site.URLRegex.Matches(string.Join(" ", args))){
 					if(match.Groups.Count < 1 || match.Length <= 0) continue;

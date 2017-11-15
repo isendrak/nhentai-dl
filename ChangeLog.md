@@ -27,3 +27,8 @@
 * added core functionality for applying custom settings (not complete yet)
 * now sending "User-Agent"-HTTP header ("NHentai-DL/0.1" by default; bypass problems with some sites)
 * added support for asmhentai.com
+
+2017-11-12 Daniel Roesich <Isendrak@googlemail.com>
+* added support for some custom configuration via configuration file (example included)
+* added support for proxy (HTTP only)
+* fixed plugin paths

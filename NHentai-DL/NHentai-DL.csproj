@@ -24,7 +24,6 @@
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>DEBUG</DefineConstants>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>doujins.com/ke8kvpgx</Commandlineparameters>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -85,6 +84,9 @@
     <Compile Include="AsmHentai.com.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
+    <Compile Include="IniFile.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -100,6 +102,9 @@
     </None>
     <None Include="..\LICENSE.md">
       <Link>LICENSE.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="nhentai-dl.conf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
