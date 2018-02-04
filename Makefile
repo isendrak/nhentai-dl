@@ -10,7 +10,8 @@ RMDIR           = rm -rfv
 MKDIR           = mkdir -p
 ZIP             = zip -v9r
 PREFIX          = /usr/local
-INSTALL         = install
+CP              = cp
+CPTREE          = $(CP) -r
 
 .PHONY: all dist/deb dist/bin dist/src dist/nsis dist clean install
 
@@ -22,12 +23,11 @@ clean:
 	$(RMDIR) bin obj dist
 
 install: all
-	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/share/nhentai-dl
-	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/share/nhentai-dl/plugins
-	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/share/man/man1
-	$(INSTALL) bin/$(CONFIGURATION)/* $(DESTDIR)/$(PREFIX)/share/nhentai-dl/
-	$(INSTALL) -d $(DESTDIR)/$(PREFIX)/bin
-	$(INSTALL) nhentai-dl.1 $(DESTDIR)/$(PREFIX)/share/man/man1
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/share/nhentai-dl/plugins
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/share/man/man1
+	$(CPTREE) bin/$(CONFIGURATION)/* $(DESTDIR)/$(PREFIX)/share/nhentai-dl/
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/bin
+	$(CP) nhentai-dl.1 $(DESTDIR)/$(PREFIX)/share/man/man1
 	sed "s|@PREFIX@|$(PREFIX)|g" < nhentai-dl > $(DESTDIR)/$(PREFIX)/bin/nhentai-dl
 	chmod +x $(DESTDIR)/$(PREFIX)/bin/nhentai-dl
 #$(INSTALL) nhentai-dl $(DESTDIR)/$(PREFIX)/bin

@@ -25,13 +25,14 @@ namespace NHentaiDL{
 
 		private static void LoadPlugins(DirectoryInfo plugin_directory){
 			if(plugin_directory.Exists){
+				Assembly plugin_assembly;
 				foreach(FileInfo plugin_file in plugin_directory.GetFiles()){
-					Assembly plugin_assembly;
-					try{
+					try {
 						plugin_assembly = Assembly.LoadFile(plugin_file.FullName);
 						LoadPlugins(plugin_assembly);
 					}
-					catch(BadImageFormatException){}
+					catch(BadImageFormatException) { }
+					catch(FileNotFoundException) { }
 				}
 			}
 		}
