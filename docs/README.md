@@ -17,7 +17,6 @@ nhentai-dl is a rather simple commandline downloader for nhentai.net and several
 * Hitomi.la - hitomi.la/galleries/123456.html
 * MangaFap.com - mangafap.com/gallery-name
 * Hentai4manga.com - hentai4manga.com/hentai_manga/gallery-name
-* Hentai.tl - hentai.tl/manga/gallery-name
 * HBrowse.com - hbrowse.com/123456
 * Hentai2read.com - hentai2read.com/gallery_name/
 * HMangaSearcher.com - hmangasearcher.com/m/Gallery+Name
@@ -38,9 +37,9 @@ nhentai-dl is a rather simple commandline downloader for nhentai.net and several
 ## Configuration: ##
 On startup the program searches for a file named "nhentai-dl.conf" in 3 locations, overriding options if they're set in 2 or more files, in this order:
 
-1. <Path to nhentai-dl.exe>\nhentai-dl.conf
-2. <Path to user profile directory>\nhentai-dl.conf (e.g. C:\Users\FooBar\nhentai-dl.conf)
-3. <Current working directory>\nhentai-dl.conf
+1. %Path to nhentai-dl.exe%\nhentai-dl.conf
+2. %Path to user profile directory%\nhentai-dl.conf (e.g. C:\Users\FooBar\nhentai-dl.conf)
+3. %Current working directory%\nhentai-dl.conf
 
 For more information about the configuration options see the default file included in this package.
 
