@@ -21,13 +21,13 @@ namespace NHentaiDL{
 			string Body = wc.DownloadString(GalleryUrl);
 			string Title = Regex.Match(Body, "<title>(.+) - Read").Groups[1].Value.Trim();
 			int Page = 0;
-			MatchCollection chapterLinks = Regex.Matches(Body, "http://hentai2read\\.com/thumbnails/[^/]+/[^/\"]+");
+			MatchCollection chapterLinks = Regex.Matches(Body, "http[s]{0,1}://hentai2read\\.com/thumbnails/[^/]+/[^/\"]+");
 			for(int Chapter = 0; Chapter < chapterLinks.Count; Chapter++){
 				Match chapterLink = chapterLinks[chapterLinks.Count - 1 - Chapter];
 				Body = wc.DownloadString(chapterLink.Groups[0].Value);
-				foreach(Match pageLink in Regex.Matches(Body, "//hentaicdn.com/hentai/([0-9]+)/([0-9]+)/thumbnails/(.+)tmb\\.(jpg|png|bmp|jpeg|gif)\\?([^\"]+)")){
-					if(pageLink.Groups.Count != 6) continue;
-					Images.Add(new ImageInfo { Filename = string.Format("c{0:00000}_{1:00000}.{2}", Chapter, Page, pageLink.Groups[4].Value), URL = new Uri(string.Format("http://hentaicdn.com/hentai/{0}/{1}/{2}.{3}?{4}", pageLink.Groups[1].Value, pageLink.Groups[2].Value, pageLink.Groups[3].Value, pageLink.Groups[4].Value, pageLink.Groups[5].Value)) });
+				foreach(Match pageLink in Regex.Matches(Body, "//hentaicdn.com/hentai/([0-9]+)/([0-9]+)/thumbnails/(.+)tmb\\.(jpg|png|bmp|jpeg|gif)(?:\\?[^\"]+|)")){
+					if(pageLink.Groups.Count != 5) continue;
+					Images.Add(new ImageInfo { Filename = string.Format("c{0:00000}_{1:00000}.{2}", Chapter, Page, pageLink.Groups[4].Value), URL = new Uri(string.Format("https://hentaicdn.com/hentai/{0}/{1}/{2}.{3}{4}", pageLink.Groups[1].Value, pageLink.Groups[2].Value, pageLink.Groups[3].Value, pageLink.Groups[4].Value, pageLink.Groups[5].Value)) });
 					Page++;
 				}
 				//Chapter--;

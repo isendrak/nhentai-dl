@@ -21,9 +21,9 @@ namespace NHentaiDL{
 			string Body = wc.DownloadString(GalleryUrl);
 			string Title = Regex.Match(Body, "<h1>([^<]+)</h1>").Groups[1].Value;
 			int Page = 1;
-			foreach(Match match in Regex.Matches(Body, "<img class=\"lazy no_image\" data-src=\"http://i\\.hentaifox\\.com/([0-9]+)/([0-9]+)/([0-9]+)t\\.(jpg|png|bmp|jpeg|gif)\"")){
-				if(match.Groups.Count != 5) continue;
-				Images.Add(new ImageInfo{ Filename = string.Format("{0:0000}.{1}", Page, match.Groups[4].Value), URL = new Uri(string.Format("http://i.hentaifox.com/{0}/{1}/{2}.{3}", match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value, match.Groups[4].Value)) });
+			foreach(Match match in Regex.Matches(Body, "<img class=\"lazy no_image\" data-src=\"//i([0-9]+)\\.hentaifox\\.com/([0-9]+)/([0-9]+)/([0-9]+)t\\.(jpg|png|bmp|jpeg|gif)\"")){
+				if(match.Groups.Count != 6) continue;
+				Images.Add(new ImageInfo{ Filename = string.Format("{0:0000}.{1}", Page, match.Groups[5].Value), URL = new Uri(string.Format("http://i{0}.hentaifox.com/{1}/{2}/{3}.{4}", match.Groups[1], match.Groups[2].Value, match.Groups[3].Value, match.Groups[4].Value, match.Groups[5].Value)) });
 				Page++;
 			}
 			return new GalleryInfo{Name = Title, Images = Images };

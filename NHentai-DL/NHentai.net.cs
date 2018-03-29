@@ -11,7 +11,7 @@ namespace NHentaiDL{
 		public string Name{get{return "NHentai.net";}}
 		public string ExampleURL{get{return "nhentai.net/g/123456";}}
 		public Regex URLRegex{get{return _URLRegex;}}
-		private Regex _URLRegex = new Regex("nhentai\\.net/g/[0-9]+");
+		private Regex _URLRegex = new Regex("(?:nhentai\\.net/g/|nhentai://)([0-9]+)");
 		
 		[DataContract]
 		public struct GalleryData{
@@ -63,7 +63,7 @@ namespace NHentaiDL{
 		
 		public GalleryInfo GetGallery(string GalleryUrl){
 			List<ImageInfo> Images = new List<ImageInfo>();
-			string galleryId = Regex.Match(GalleryUrl, "nhentai.net/g/([0-9]+)").Groups[1].Value;
+			string galleryId = URLRegex.Match(GalleryUrl).Groups[1].Value;
 			WebClient wc = new WebClient();
 			if(Settings.Proxy != null) wc.Proxy = new WebProxy(Settings.Proxy);
 			wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;

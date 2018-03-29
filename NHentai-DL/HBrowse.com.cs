@@ -23,10 +23,10 @@ namespace NHentaiDL{
 			string Title = Regex.Match(Body, "<title>([^>]+)</title>").Groups[1].Value.Trim();
 			int Page = 0;
 			int Chapter = 0;
-			foreach(Match chapterLink in Regex.Matches(Body, "http://www\\.hbrowse\\.com/thumbnails/[0-9]+/c[0-9]+")){
+			foreach(Match chapterLink in Regex.Matches(Body, "/thumbnails/[0-9]+/c[0-9]+")){
 				wc.Headers[HttpRequestHeader.UserAgent] = Settings.UserAgent;
-				Body = wc.DownloadString(chapterLink.Groups[0].Value);
-				foreach(Match pageLink in Regex.Matches(Body, "http://www\\.hbrowse\\.com/data/([0-9]+)/c([0-9]+)/zzz/([0-9]+)\\.(jpg|png|bmp|jpeg|gif)")){
+				Body = wc.DownloadString("http://www.hbrowse.com"+chapterLink.Groups[0].Value);
+				foreach(Match pageLink in Regex.Matches(Body, "/data/([0-9]+)/c([0-9]+)/[0-9a-zA-Z]+/([0-9a-zA-Z]+)\\.(jpg|png|bmp|jpeg|gif)")){
 					if(pageLink.Groups.Count != 5) continue;
 					Images.Add(new ImageInfo { Filename = string.Format("c{0:00000}_{1:00000}.{2}", Chapter, Page, pageLink.Groups[4].Value), URL = new Uri(string.Format("http://www.hbrowse.com/data/{0}/c{1}/{2}.{3}", pageLink.Groups[1].Value, pageLink.Groups[2].Value, pageLink.Groups[3].Value, pageLink.Groups[4].Value)) });
 					Page++;

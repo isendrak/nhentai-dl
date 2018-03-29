@@ -19,9 +19,9 @@ namespace NHentaiDL{
 			string Body = wc.DownloadString(GalleryUrl);
 			string Title = Regex.Match(Body, "<h1><a href=\"/reader/[0-9]+.html\">(.+)</a></h1>").Groups[1].Value;
 			int Page = 1;
-			foreach(Match match in Regex.Matches(Body, "//tn.hitomi.la/smalltn/([0-9]+)/(.+)\\.(jpg|png|bmp|jpeg|gif)\\.(jpg|png|bmp|jpeg|gif)")){
+			foreach(Match match in Regex.Matches(Body, "//tn.hitomi.la/smalltn/([0-9]+)/([0-9]+)\\.(jpg|png|bmp|jpeg|gif)\\.(jpg|png|bmp|jpeg|gif)")){
 				if(match.Groups.Count != 5) continue;
-				Images.Add(new ImageInfo{Filename = string.Format("{0:0000}.{1}", Page, match.Groups[4].Value), URL = new Uri(string.Format("http://{0}.hitomi.la/galleries/{1}/{2}.{3}", (char)(97+(Page%2)), match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value))});
+				Images.Add(new ImageInfo{Filename = string.Format("{0:0000}.{1}", Page, match.Groups[4].Value), URL = new Uri(string.Format("http://{0}.hitomi.la/galleries/{1}/{2}.{3}", (Page%2)==0?"0a":"a", match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value))});
 				Page++;
 			}
 			return new GalleryInfo{Name = Title, Images = Images };

@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nhentai-dl = nhentai-dl
 		nhentai-dl.1 = nhentai-dl.1
 		LICENSE.md = LICENSE.md
+		NHentai-DL.pkgbuild = NHentai-DL.pkgbuild
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplePlugin", "ExamplePlugin\ExamplePlugin.csproj", "{128D1C81-0BAB-4CFD-9C63-F631F042238C}"

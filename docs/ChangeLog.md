@@ -32,3 +32,15 @@
 * added support for some custom configuration via configuration file (example included)
 * added support for proxy (HTTP only)
 * fixed plugin paths
+
+2018-03-29 Daniel Roesich <Isendrak@googlemail.com>
+* added support for ArchLinux 'makepkg' package building
+* fixed e-hentai.org
+* fixed hitomi.la
+* fixed hentaifox.com
+* fixed hentai2read.com
+* fixed hbrowse.com
+* fixed pururin.us (moved to pururin.io)
+* fixed doujin-moe.us (moved to doujins.com)
+* removed hentai.tl (site is down for good)
+* updated README.md

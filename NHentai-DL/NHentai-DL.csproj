@@ -39,7 +39,7 @@
     <Compile Include="NHentai.net.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Doujin-Moe.us.cs">
+    <Compile Include="Doujins.com.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="EHentai.org.cs">
@@ -63,9 +63,6 @@
     <Compile Include="Hentai4manga.com.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hentai.tl.cs">
-      <DependentUpon>ISitePlugin.cs</DependentUpon>
-    </Compile>
     <Compile Include="HBrowse.com.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
@@ -75,7 +72,7 @@
     <Compile Include="HMangaSearcher.com.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pururin.us.cs">
+    <Compile Include="Pururin.io.cs">
       <DependentUpon>ISitePlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs">

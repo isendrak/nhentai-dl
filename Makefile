@@ -6,21 +6,22 @@ ARCH            = all
 MSBUILD         = msbuild
 MSBUILDFLAGS    = /p:Configuration=$(CONFIGURATION)
 NSIS            = makensis
-RMDIR           = rm -rfv
+RMDIR           = rmdir
+RMTREE          = rm -rfv
 MKDIR           = mkdir -p
 ZIP             = zip -v9r
 PREFIX          = /usr/local
 CP              = cp
 CPTREE          = $(CP) -r
 
-.PHONY: all dist/deb dist/bin dist/src dist/nsis dist clean install
+.PHONY: all dist/bin dist/src dist/nsis dist/pacman dist clean install
 
 all:
 	$(MSBUILD) $(MSBUILDFLAGS) NHentai-DL.sln
 
 clean:
 	$(MSBUILD) $(MSBUILDFLAGS) /t:clean
-	$(RMDIR) bin obj dist
+	$(RMTREE) bin obj dist
 
 install: all
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/share/nhentai-dl/plugins
@@ -30,7 +31,6 @@ install: all
 	$(CP) nhentai-dl.1 $(DESTDIR)/$(PREFIX)/share/man/man1
 	sed "s|@PREFIX@|$(PREFIX)|g" < nhentai-dl > $(DESTDIR)/$(PREFIX)/bin/nhentai-dl
 	chmod +x $(DESTDIR)/$(PREFIX)/bin/nhentai-dl
-#$(INSTALL) nhentai-dl $(DESTDIR)/$(PREFIX)/bin
 
 dist/bin: all
 	$(MKDIR) dist
@@ -40,8 +40,15 @@ dist/src:
 	$(MKDIR) dist
 	$(ZIP) -xdist/\* -x\*/bin\* -xbin/\* -x\*/obj/\* -xobj/\* -x\*.userprefs "dist/$(PACKAGE_NAME)_$(PACKAGE_VERSION)-Source.zip" *
 
-dist/nsis:
+dist/nsis: all
 	$(MKDIR) dist
 	$(NSIS) NHentai-DL.nsi
+
+dist/pacman:
+	$(MKDIR) dist
+	$(MKDIR) makepkg.tmp
+	$(CP) NHentai-DL.pkgbuild makepkg.tmp/PKGBUILD
+	cd makepkg.tmp;PKGDEST="$$PWD/../dist" makepkg
+	$(RMTREE) makepkg.tmp
 
 dist: dist/bin dist/src
